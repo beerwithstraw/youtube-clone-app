@@ -13,24 +13,23 @@ class App extends React.Component{
     selectedVideo: null,
   }
    
-  // componentDidMount(){
-  //   this.handleSubmit('Pewdiepie')
-  // }
+  componentDidMount(){
+    this.handleSubmit('Pewdiepie')
+  }
   onVideoSelect = (video) => {
     this.setState({selectedVideo: video});
   }
   
   handleSubmit = async (searchTerm) => {
     const response = await youtube.get('search', {
-    // { params: {q: searchTerm}   
       params: {
         part: 'snippet',
         maxResults: 5,
-        key: 'AAIzaSyB1ZAZ1XP6w0hO85HkdKtA1vqo7hIZes_A',
+        key: 'AIzaSyDM8DipAKyPMzpKvswAsKHjD8pOSTNsX1U',
         q: searchTerm,         
       }
     });
-    console.log(response)
+    console.log(response);
     this.setState({videos: response.data.items, selectedVideo: response.data.items[0] });
   }
 
@@ -40,10 +39,10 @@ class App extends React.Component{
     const { selectedVideo, videos } = this.state;
 
     return(
-      <Grid justify="center"  container spacing={10}>
+      <Grid justify="center"  container spacing={8}>
         <Grid item xs={12}>
-          <Grid container spacing={10}>
-            <Grid item xs={12}>
+          <Grid container spacing={8}>
+            <Grid item xs={8}>
               <SearchBar onFormSubmit={this.handleSubmit}></SearchBar>
             </Grid>
             <Grid item xs={8}>
